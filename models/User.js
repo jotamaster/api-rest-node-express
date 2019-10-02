@@ -1,26 +1,29 @@
+const { Model } = require('objection');
+const knex = require('../db');
 
-const { Model } = require("objection");
-const Role = require("./Role");
+Model.knex(knex);
 
+/**
+* @typedef User
+* @property {string} username.required - Min length 4 characters
+* @property {string} password.required - Min length 6 characters
+* @property {string} confirm_password.required
+* @property {string} email.required - email address
+* @property {integer} role_id.required - role id - eg: 2
+*/
+
+/**
+* @typedef UserResponse
+* @property {integer} id
+* @property {string} username
+* @property {string} email
+* @property {RoleResponse.model} role
+*/
 
 class User extends Model {
-
-    static get tableName() {
-        return "users";
-    }
-
-    static get relationMappings() {
-        return {
-            role: {
-                relation: Model.BelongsToOneRelation,
-                modelClass: Role,
-                join: {
-                    from: "users.role_id",
-                    to: "roles.id"
-                }
-            }
-        }
-    }
+  static get tableName() {
+    return 'users';
+  }
 }
 
 module.exports = User;
