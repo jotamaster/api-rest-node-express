@@ -12,7 +12,7 @@ const User  = require('../../models/User')
 const router = express.Router();
 
 //status 422 - Validation error
-//status 401 - Invalid credentials
+//status 401 - Unauthorized -Unauthorized
 
 router.post('/login',[
     check('username').isLength({min:4}),
