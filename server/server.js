@@ -9,7 +9,7 @@ const environment = process.env.NODE_ENV || 'development'
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user/index')
 const authRouter = require('./routes/auth')
-const adminRouter = require('./routes/admin')
+const adminRouter = require('./routes/admin/index')
 
 const app = express()
 
