@@ -8,7 +8,8 @@ const environment = process.env.NODE_ENV || 'development'
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user/index')
-const authRouter = require('./routes/auth');
+const authRouter = require('./routes/auth')
+const adminRouter = require('./routes/admin')
 
 const app = express()
 
@@ -29,7 +30,8 @@ app.use(passport.initialize())
 
 app.use('/', indexRouter)
 app.use('/user',userRouter)
-app.use('/auth', authRouter);
+app.use('/auth', authRouter)
+app.use('/admin', adminRouter)
 
 
   // error 404
