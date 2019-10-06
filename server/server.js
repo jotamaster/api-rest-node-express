@@ -5,6 +5,7 @@ const passport = require('passport')
 
 const environment = process.env.NODE_ENV || 'development'
 
+const authGuard = require('./middleware/authGuard');
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user/index')
@@ -30,8 +31,8 @@ app.use(passport.initialize())
 
 app.use('/', indexRouter)
 app.use('/user',userRouter)
-app.use('/auth', authRouter)
-app.use('/admin', adminRouter)
+app.use('/auth',authRouter)
+app.use('/admin',authGuard.jwt('admin'), adminRouter)
 
 
   // error 404
